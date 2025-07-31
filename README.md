@@ -1,4 +1,4 @@
-# AVR-Dodge
+# AVR_Obstacle_Dodge
 
 A simple obstacle-dodging game built for AVR microcontrollers using a 16x2 alphanumeric LCD and a 4x4 matrix keypad. The player controls a character that moves left or right to avoid falling obstacles on the screen.
 

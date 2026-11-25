@@ -1,66 +1,58 @@
 # AVR_Obstacle_Dodge
 
-A simple obstacle-dodging game built for AVR microcontrollers using a 16x2 alphanumeric LCD and a 4x4 matrix keypad. The player controls a character that moves left or right to avoid falling obstacles on the screen.
+![C](https://img.shields.io/badge/C-00599C?logo=c&logoColor=white)
+![MCU](https://img.shields.io/badge/ATmega32-AVR-red)
+![Simulation](https://img.shields.io/badge/simulation-Proteus%20%C2%B7%20CodeVisionAVR-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
----
+A small obstacle-dodging game for AVR microcontrollers, played on a 16×2 alphanumeric LCD with a 4×4 matrix keypad. The player moves left or right to avoid falling obstacles.
 
-## 🎮 Features
+![Setup](images/AVR_Obstacle_Dodge.png)
 
-- Display: 16x2 Alphanumeric LCD
-- Controls: 4x4 Matrix Keypad (using left and right buttons)
-- Gameplay: Randomized falling obstacles
-- Microcontroller: ATmega32 (configurable)
-- Real-time screen updates
-- Designed for simulation via Proteus and CodeVisionAVR
+## Features
 
----
+- 16×2 alphanumeric LCD as the game field
+- 4×4 matrix keypad for left / right movement
+- Randomised falling obstacles with collision detection
+- ATmega32 target (port pins configurable in the CodeVision wizard)
+- Runs fully in simulation (Proteus + CodeVisionAVR)
 
-## 🕹️ Controls
+## Controls
 
-- Press the **Left** key (`4` or `←`) to move left
-- Press the **Right** key (`6` or `→`) to move right
+| Key | Action |
+| --- | --- |
+| `4` / `←` | Move left |
+| `6` / `→` | Move right |
 
-The character is shown as `#` and obstacles are `*`. If an obstacle collides with the player, the game stops and displays `Game Over`.
+The player is drawn as `#`, obstacles as `*`. On collision the game stops and prints `Game Over`.
 
----
+## Build and simulate
 
-## 🛠️ How to Build and Simulate
+### CodeVisionAVR
 
-### 🔧 Using CodeVisionAVR
+1. Open `AVR_Obstacle_Dodge.c` in CodeVisionAVR.
+2. Enable the LCD library: *Project → Configure → CodeWizardAVR → Alphanumeric LCD*.
+3. Set the LCD port and pins (e.g. `PORTC`).
+4. Compile — the `.hex` and `.cof` files are generated.
 
-1. Open the `.c` file (e.g., `AVR_Dodge.c`) in **CodeVisionAVR**.
-2. Make sure the LCD library is enabled in:
-Project → Configure → CodeWizardAVR → Alphanumeric LCD → Enable
-3. Set your LCD port and pins (e.g., PORTC).
-4. Compile the project. This will generate `.hex` and `.cof` files.
-5. Optional: Use `Build All` to update all intermediate files.
+### Proteus
 
-### 🧪 Using Proteus
+1. Create a project with an **ATmega32**, a **16×2 LCD** and a **4×4 keypad**.
+2. Wire them to the same ports used in the CodeVision configuration.
+3. Load the compiled `.hex` into the ATmega32 and start the simulation.
 
-1. Open **Proteus** and create a new project.
-2. Add the following components:
-- ATmega32
-- 16x2 Alphanumeric LCD
-- 4x4 Matrix Keypad
-3. Connect the LCD and keypad to the same ports used in your CodeVision configuration.
-4. Load the compiled `.hex` file to the ATmega32.
-5. Run the simulation and play the game!
+> Tip: assign Proteus buttons to keypad rows to play with the mouse.
 
-> 💡 Tip: You can assign buttons in Proteus to keypad rows for easier testing.
+## Project files
 
----
+```
+AVR_Obstacle_Dodge.c        # game logic
+AVR_Obstacle_Dodge.cproj    # CodeVisionAVR project
+AVR_Obstacle_Dodge.pdsprj   # Proteus schematic
+images/                     # setup screenshot
+LICENSE.txt                 # MIT
+```
 
-## 📁 Project Structure
+## License
 
-```bash
-AVR-Dodge/
-│
-├── AVR_Dodge.c         # Main game logic
-├── AVR_Dodge.hex       # Compiled HEX for Proteus simulation
-├── README.md           # This file
-├── .gitignore          # Git ignore rules
-├── proteus.dsn         # (Optional) Proteus design file
-└── CodeVision/
- ├── AVR_Dodge.cwp   # CodeVision project workspace
- ├── AVR_Dodge.cproj # CodeVision project file
- └── ...             # Intermediate files (.cof, .fct, etc.)
+MIT — see [LICENSE.txt](LICENSE.txt). © Mostafa Ahmadi
